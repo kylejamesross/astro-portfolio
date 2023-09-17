@@ -6,9 +6,36 @@ import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import Layout from '../layouts/Layout.astro'
-import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import H1 from '../components/H1.astro';
+import { SITE_TITLE, SITE_DESCRIPTION, portfolioJSON } from '../consts';
+const projects = portfolioJSON.projects
 ---
 
 <Layout>
-	<h2 class="text-4xl font-bold">Projects</h2>
+	<H1 class="text-center">Projects</H1>
+	<ul class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
+		{
+		projects.map((project) => (
+			<li>
+				<a href={project.url} class="card card-compact w-96 bg-base-200 shadow-xl">
+					<figure>
+						<img width="100%" src={project.images.at(0).resolutions.mobile.url || ''} alt={project.displayName} />
+					</figure>
+					<div class="card-body">
+						<h2 class="card-title">{project.displayName}</h2>
+						<p>{project.summary}</p>
+						<div class="card-actions justify-end">
+							{project.languages.map((language) => (
+								<div class="badge badge-primary badge-outline">{language}</div> 
+							))}
+							{project.libraries.map((library) => (
+								<div class="badge badge-secondary badge-outline">{library}</div> 
+							))}
+						</div>
+					</div>
+				</a>
+			</li>
+		))
+		}
+	</ul>
 </Layout>
