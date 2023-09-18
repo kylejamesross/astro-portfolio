@@ -17,9 +17,9 @@ const posts = (await getCollection('posts')).sort(
 <Layout>
 	<Breadcrumbs />
 	<H1>Posts</H1>
-	<p class="italic mb-4">All the articles I've posted.</p>
+	<p class="italic mt-2 mb-4">All the articles I've posted.</p>
 	<section>
-		<ul>
+		<ul class="mt-8">
 			{
 			posts.map((post) => (
 				<li class="card w-96 bg-base-200 p-0 shadow-xl my-4">
