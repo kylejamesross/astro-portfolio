@@ -4,6 +4,7 @@ import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import Layout from '../layouts/Layout.astro'
+import Breadcrumbs from '../components/Breadcrumbs.astro'
 import H1 from '../components/H1.astro'
 import { SITE_TITLE, SITE_DESCRIPTION, portfolioJSON } from '../consts';
 const { work: workplaces } = portfolioJSON;
@@ -23,16 +24,14 @@ function monthNumberToAbbreviation(monthNumber) {
 ---
 
 <Layout>
-	<H1 class="text-center">Work History</H1>
+	<Breadcrumbs />
+	<H1>Work History</H1>
+	<p class="italic mb-4">Here is my current work history.</p>
 	<ul>
 		{workplaces.map((workplace) => (
 			<li class="grid grid-cols-12">
-				<div class="col-span-1 m-auto flex h-full flex-col items-center ">
-					<div class="w-3 h-3 bg-primary rounded-full" />
-					<div class="h-full border-x border-primary border-dashed" />
-				</div>
 				<div class="col-span-11">
-					<div class="flex items-center justify-between">
+					<div class="flex items-center justify-between flex-wrap">
 						<h2 class="text-2xl font-bold">{workplace.name}</h2>
 						<div class="badge badge-outline badge-accent">{monthNumberToAbbreviation(workplace.start.month)}{" "}{workplace.start.year}{" - "}{monthNumberToAbbreviation(workplace.end.month)}{" "}{workplace.end.year || 'Present'}</div>
 					</div>
@@ -42,6 +41,10 @@ function monthNumberToAbbreviation(monthNumber) {
 							<li class="font-light mb-2">{highlight}</li>
 						))}
 					</ul>
+				</div>
+				<div class="col-span-1 m-auto flex h-full flex-col items-center ">
+					<div class="w-3 h-3 bg-primary rounded-full" />
+					<div class="h-full border-x border-primary border-dashed" />
 				</div>
 			</li>
 		))}

@@ -1,0 +1,36 @@
+
+---
+const currentUrlPath = Astro.url.pathname.replace(/\/+$/, "");
+
+const breadcrumbList = currentUrlPath.split("/").slice(1);
+
+breadcrumbList[0] === "posts" &&
+    breadcrumbList.splice(0, 2, `Posts (page ${breadcrumbList[1] || 1})`);
+---
+
+<nav class="breadcrumbs" aria-label="breadcrumb">
+    <ul>
+        <li>
+            <a href="/">Home</a>
+        </li>
+        {
+        breadcrumbList.map((breadcrumb, index) =>
+            index + 1 === breadcrumbList.length ? (
+                <li>
+                    <span
+                        class={`${index > 0 ? "lowercase" : "capitalize"}`}
+                        aria-current="page"
+                    >
+                        {/* make the last part lowercase in Home > Tags > some-tag */}
+                        {breadcrumb}
+                    </span>
+                </li>
+            ) : (
+                    <li>
+                        <a href={`/${breadcrumb}`}>{breadcrumb}</a>
+                    </li>
+                )
+        )
+        }
+    </ul>
+</nav>
