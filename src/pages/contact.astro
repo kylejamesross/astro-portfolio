@@ -7,8 +7,33 @@ import Footer from '../components/Footer.astro';
 import H1 from '../components/H1.astro';
 import Layout from '../layouts/Layout.astro'
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
 ---
 
 <Layout>
+	<Breadcrumbs />
 	<H1>Contact</H1>
+	<p class="italic mt-2 mb-4">Send me a message below.</p>
+	<form action="https://formspree.io/f/xzblvjzw" method="POST">
+		<div class="form-control w-full max-w-md mt-2">
+			<label class="label">
+				<span class="label-text">Email</span>
+			</label>
+			<input type="email" name="email" placeholder="Type here" class="input input-bordered w-full max-w-md" />
+		</div>
+		<div class="form-control w-full max-w-md mt-2">
+			<label class="label">
+				<span class="label-text">Message</span>
+			</label>
+			<textarea name="message" class="textarea textarea-bordered textarea-ghost" placeholder="Type here" rows="5"></textarea>
+		</div>
+		<button type="submit" class="btn btn-accent mt-4">Sumbit</button>
+	</form>
 </Layout>
+<script is:inline>
+window.onbeforeunload = () => {
+	for(const form of document.getElementsByTagName('form')) {
+		form.reset();
+	}
+}
+</script>

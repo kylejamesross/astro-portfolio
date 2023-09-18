@@ -22,7 +22,7 @@ breadcrumbList[0] === "posts2" &&
                         aria-current="page"
                     >
                         {/* make the last part lowercase in Home > Tags > some-tag */}
-                        {breadcrumb}
+                        {breadcrumb.replace(/-/, " ")}
                     </span>
                 </li>
             ) : (
