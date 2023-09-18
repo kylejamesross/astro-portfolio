@@ -36,7 +36,7 @@ function monthNumberToAbbreviation(monthNumber) {
 						<div class="badge badge-outline badge-accent">{monthNumberToAbbreviation(workplace.start.month)}{" "}{workplace.start.year}{" - "}{monthNumberToAbbreviation(workplace.end.month)}{" "}{workplace.end.year || 'Present'}</div>
 					</div>
 					<p class="font-medium text-secondary pb-4">{workplace.position}{' '}<span class="badge badge-outline badge-primary">{workplace.location}</span></p>
-					<ul class="grid grid-cols-1 list-disc pb-8">
+					<ul class="grid grid-cols-1 list-disc list-inside pb-8">
 						{workplace.highlights.map((highlight) => (
 							<li class="font-light mb-2">{highlight}</li>
 						))}

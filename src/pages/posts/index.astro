@@ -7,6 +7,7 @@ import { getCollection } from 'astro:content';
 import FormattedDate from '../../components/FormattedDate.astro';
 import Layout from '../../layouts/Layout.astro'
 import H1 from '../../components/H1.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
 
 const posts = (await getCollection('posts')).sort(
 	(a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
@@ -14,18 +15,18 @@ const posts = (await getCollection('posts')).sort(
 ---
 
 <Layout>
+	<Breadcrumbs />
 	<H1>Posts</H1>
+	<p class="italic mb-4">All the articles I've posted.</p>
 	<section>
 		<ul>
 			{
 			posts.map((post) => (
-				<li>
-					<a href={`/posts/${post.slug}/`}>
-						<img width={720} height={360} src={post.data.heroImage} alt="" />
-						<h4 class="title">{post.data.title}</h4>
-						<p class="date">
-							<FormattedDate date={post.data.pubDate} />
-						</p>
+				<li class="card w-96 bg-base-200 p-0 shadow-xl my-4">
+					<a href={`/posts/${post.slug}/`} class="card-body p-4">
+						<h2 class="card-title font-medium text-accent decoration-dashed hover:underline">{post.data.title}</h2>
+						<FormattedDate date={post.data.pubDate} />
+						<p>{post.data.summary}</p>
 					</a>
 				</li>
 			))
