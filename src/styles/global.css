@@ -3,6 +3,7 @@
   src: url('/fonts/IBMPlexMono-Regular.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
+  display: swap;
 }
 
 @font-face {
@@ -10,12 +11,14 @@
   src: url('/fonts/IBMPlexMono-Bold.ttf') format('truetype');
   font-weight: bold;
   font-style: normal;
+  display: swap;
 }
 @font-face {
   font-family: 'IBM Plex Mono';
   src: url('/fonts/IBMPlexMono-Medium.ttf') format('truetype');
   font-weight: 500;
   font-style: normal;
+  display: swap;
 }
 
 @font-face {
@@ -23,11 +26,13 @@
   src: url('/fonts/IBMPlexMono-Italic.ttf') format('truetype');
   font-weight: normal;
   font-style: italic;
+  display: swap;
 }
 
 body {
-  font-family: 'IBM Plex Mono', sans-serif;
+  font-family: 'IBM Plex Mono', monospace;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  display: swap;
 }

@@ -13,11 +13,18 @@ import CsharpIcon from '../components/technologies/CsharpIcon.astro';
 import DotnetCoreIcon from '../components/technologies/DotnetCoreIcon.astro';
 import AngularIcon from '../components/technologies/AngularIcon.astro';
 import PostgresSqlIcon from '../components/technologies/PostgresSqlIcon.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import LessIcon from '../components/technologies/LessIcon.astro';
+import FormattedDate from '../components/FormattedDate.astro';
+import { getCollection } from 'astro:content';
+import { SITE_TITLE, SITE_DESCRIPTION, portfolioJSON } from '../consts';
+const featuredProjects = portfolioJSON.projects.slice(0, 3);
+const recentPosts = (await getCollection('posts')).sort(
+	(a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
+).slice(0, 3);
 ---
 
 <Layout>
-	<section class="border-2 border-b-primary border-t-transparent border-x-transparent pb-4 border-solid">
+	<section class="border-2 border-b-neutral-content border-t-transparent border-x-transparent pb-4 border-solid">
 		<H1>Hi, I am <span class="text-primary">Kyle Ross</span>.</H1>
 		<H1>I am a full-stack web developer.</H1>
 		<p class="my-4">I'm an accomplished Full Stack Developer with a proven track record in designing, developing, and maintaining responsive websites. My proficiency spans a wide range of technologies, enabling me to deliver high-quality software solutions.</p>
@@ -31,10 +38,39 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 			<DotnetCoreIcon />
 			<AngularIcon />
 			<PostgresSqlIcon />
+			<LessIcon />
 		</div>
 		<div class="flex items-center my-4"> 
 			<div class="mr-2">Social Links:</div>
 			<SocialIcons />
 		</div>
+	</section>
+	<section class="border-2 border-b-neutral-content border-t-transparent border-x-transparent py-4 border-solid">
+		<h2 class="text-2xl leading-normal">Featured Projects</h2>
+		<ul>
+			{featuredProjects.map((project) => (
+				<li class="card w-90 bg-base-200 p-0 shadow-xl my-4">
+					<a href={project.url} class="card-body p-4">
+						<h2 class="card-title font-medium text-accent decoration-dashed hover:underline">{project.displayName}</h2>
+						<p>{project.summary}</p>
+					</a>
+				</li>
+			))}
+		</ul>
+
+	</section class="border-2 border-b-primary border-t-transparent border-x-transparent p-4 border-solid">
+	<section class="border-2 border-b-neutral-content border-t-transparent border-x-transparent py-4 border-solid">
+		<h2 class="text-2xl leading-normal">Recent Articles</h2>
+		<ul>
+			{recentPosts.map((post) => (
+				<li class="card w-90 bg-base-200 p-0 shadow-xl my-4">
+					<a href={`/posts/${post.slug}/`} class="card-body p-4">
+						<h2 class="card-title font-medium text-accent decoration-dashed hover:underline">{post.data.title}</h2>
+						<FormattedDate date={post.data.pubDate} />
+						<p>{post.data.summary}</p>
+					</a>
+				</li>
+			))}
+		</ul>
 	</section>
 </Layout>
