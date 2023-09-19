@@ -22,7 +22,7 @@ const posts = (await getCollection('posts')).sort(
 		<ul class="mt-8">
 			{
 			posts.map((post) => (
-				<li class="card w-96 bg-base-200 p-0 shadow-xl my-4">
+				<li class="card w-90 bg-base-200 p-0 shadow-xl my-4">
 					<a href={`/posts/${post.slug}/`} class="card-body p-4">
 						<h2 class="card-title font-medium text-accent decoration-dashed hover:underline">{post.data.title}</h2>
 						<FormattedDate date={post.data.pubDate} />

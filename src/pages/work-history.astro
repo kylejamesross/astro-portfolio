@@ -33,9 +33,9 @@ function monthNumberToAbbreviation(monthNumber) {
 				<div class="col-span-11">
 					<div class="flex items-center justify-between flex-wrap">
 						<h2 class="text-2xl font-bold">{workplace.name}</h2>
-						<div class="badge badge-outline badge-accent">{monthNumberToAbbreviation(workplace.start.month)}{" "}{workplace.start.year}{" - "}{monthNumberToAbbreviation(workplace.end.month)}{" "}{workplace.end.year || 'Present'}</div>
+						<div class="badge badge-outline badge-accent my-4 sm:my-0">{monthNumberToAbbreviation(workplace.start.month)}{" "}{workplace.start.year}{" - "}{monthNumberToAbbreviation(workplace.end.month)}{" "}{workplace.end.year || 'Present'}</div>
 					</div>
-					<p class="font-medium text-secondary pb-4">{workplace.position}{' '}<span class="badge badge-outline badge-primary">{workplace.location}</span></p>
+					<p class="font-medium text-secondary pb-4">{workplace.position}{' '}<span class="badge badge-outline badge-primary mt-4 sm:mt-0">{workplace.location}</span></p>
 					<ul class="grid grid-cols-1 list-disc list-inside pb-8">
 						{workplace.highlights.map((highlight) => (
 							<li class="font-light mb-2">{highlight}</li>
