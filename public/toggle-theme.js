@@ -7,7 +7,7 @@ function toggleTheme() {
   localStorage.setItem("theme", newTheme);
 }
 
-window.onload = () => {
+document.onreadystatechange = () => {
   const toggleButton = document.getElementById('theme-toggle-btn');
   toggleButton.addEventListener('click', toggleTheme);
 
