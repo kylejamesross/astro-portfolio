@@ -1,17 +1,17 @@
 ---
-title: 'Guide to Implementing Light and Dark Mode for Websites'
+title: 'Guide to Implementing Light and Dark Modes for Websites'
 description: 'Add light and dark mode options to your website with my step-by-step guide.'
 summary: 'Add light and dark mode options to your website with my step-by-step guide.'
 pubDate: 'Sept 22 2023'
 ---
 
-# Guide to Implementing Light and Dark Mode for Websites
+# Guide to Implementing Light and Dark Modes for Websites
 
-Many users are seeking more personalized browsing experience. Offering the option to switch between light and dark modes has become necessity for modern web developers. This guide aims to give streamlined practical steps to incorporate light and dark mode functionalities into your website. By implementing this feature you will enhance user experience and provide a more inclusive ad visually appealing web experience.
+Many users are seeking personalized browsing experiences. Offering the option to switch between light and dark modes has become a necessity for modern web developers. This guide aims to give streamlined practical steps to incorporate light and dark mode functionalities into your website. By implementing this feature, you will enhance the user's experience and provide a more inclusive and visually appealing web experience.
 
 ## Getting started
 
-Today's browsers come equipped with a modern CSS feature called `prefers-color-scheme`. This feature allows us to detect whether light or dark mode has been enabled in the user's browser. By utilizing `prefers-color-scheme` along with CSS media queries, we can seamlessly implement light and dark mode options in our websites.
+Today's browsers come equipped with a modern CSS feature called `prefers-color-scheme`. This feature allows us to detect whether light or dark mode has been enabled in the user's browser. By utilizing `prefers-color-scheme` along with CSS media queries, we can seamlessly implement light and dark mode options on our websites.
 
 Here is the current browser support for `prefers-color-scheme`:
 ![Can I use prefers-color-scheme](https://caniuse.bitsofco.de/image/prefers-color-scheme.png)
@@ -35,9 +35,9 @@ body {
   }
 }
 ```
-## CSS Variables for Light and Dark Themes
+## CSS Variables for light and dark themes
 
-While working on the visual style differences between your light and dark themes, it can be beneficial to define these differences using CSS variables. We then place these variables is the `:root` CSS pseudo-class.
+While working on the visual style differences between your light and dark themes, it can be beneficial to define these differences using CSS variables. We then place these variables in the `:root` CSS pseudo-class.
 
 ##### CSS:
 ```css 
@@ -63,7 +63,7 @@ body {
 ```
 ## Toggling between Light and Dark Modes
 
-In order to implement the dark and light themes on our website, we will utilize CSS to define and distinguish between the two modes. To achieve this, we can utilize the `data-theme` attribute on the root HTML element.
+In order to implement the dark and light themes on our website, we will utilize CSS to distinguish between the two modes. To achieve this, we can utilize the `data-theme` attribute on the root HTML element.
 
 ##### CSS:
 ```css
@@ -109,7 +109,7 @@ function toggleTheme() {
   rootElement.setAttribute('data-theme', newTheme);
 }
 
-const toggleThemeButton = document.getElementById('toggle-button');
+const toggleThemeButton = document.getElementById('theme-toggle-btn');
 toggleThemeButton.addEventListener('click', toggleTheme);
 ```
 ## Persisting the User's Selected Theme
@@ -138,7 +138,7 @@ if (currentTheme == "dark") {
   rootElement.setAttribute('data-theme', 'light');
 }
 ```
-With this updated code, the user's selected theme will be stored in `localStorage` when the theme is toggled, and when the user visits another page or reloads the page, the selected theme will be applied.
+With this updated code, the user's selected theme will be stored in `localStorage` when the theme is toggled. When the user visits another page or reloads the page, the selected theme will be applied.
 
 ## Informing the Browser about System Color Scheme Changes
 
@@ -156,7 +156,7 @@ color-scheme Property:
 By providing this information to the browser, it can consider the color scheme when rendering user agent-controlled elements.
 
 ## Conclusion
-In conclusion, we have implemented a light and dark mode feature for your website. This allows users to toggle between light and dark modes, enhancing their overall browsing experience. Additionally, we have added a feature that adapts the theme based on the user's browser settings.  Below is the final result:
+In conclusion, we have implemented a light and dark mode feature. This allows users to toggle between light and dark modes, enhancing their overall browsing experience. Additionally, we have allowed the adaption of the theme based on the user's browser settings.  Below is the final result:
 
 ##### CSS:
 ```css
