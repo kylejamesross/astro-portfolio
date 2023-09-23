@@ -1,53 +1,22 @@
+const rootElement = document.documentElement; // html element
 
-const primaryColorScheme = ""; // "light" | "dark"
-
-// Get theme data from local storage
-const currentTheme = localStorage.getItem("theme");
-
-function getPreferTheme() {
-  // return theme value in local storage if it is set
-  if (currentTheme) return currentTheme;
-
-  // return primary color scheme if it is set
-  if (primaryColorScheme) return primaryColorScheme;
-
-  // return user device's prefer color scheme
-  return window.matchMedia("(prefers-color-scheme: dark)").matches
-    ? "dark"
-    : "light";
+function toggleTheme() {
+  const currentTheme = rootElement.getAttribute('data-theme');
+  const newTheme = currentTheme === "dracula" ? "corporate" : "dracula";
+  rootElement.setAttribute('data-theme', newTheme);
+  localStorage.setItem("theme", newTheme);
 }
-
-let themeValue = getPreferTheme();
-
-function setPreference() {
-  localStorage.setItem("theme", themeValue);
-  reflectPreference();
-}
-
-function reflectPreference() {
-  document.firstElementChild.setAttribute("data-theme", themeValue);
-
-  document.querySelector("#theme-btn")?.setAttribute("aria-label", themeValue);
-}
-
-// set early so no page flashes / CSS is made aware
-reflectPreference();
 
 window.onload = () => {
-  // set on load so screen readers can get the latest value on the button
-  reflectPreference();
+  const toggleButton = document.getElementById('theme-toggle-btn');
+  toggleButton.addEventListener('click', toggleTheme);
 
-  // now this script can find and listen for clicks on the control
-  document.querySelector("#theme-btn")?.addEventListener("click", () => {
-    themeValue = themeValue === "light" ? "dark" : "light";
-    setPreference();
-  });
-};
+  const currentTheme = localStorage.getItem("theme");
 
-// sync with system changes
-window
-  .matchMedia("(prefers-color-scheme: dark)")
-  .addEventListener("change", ({ matches: isDark }) => {
-    themeValue = isDark ? "dark" : "light";
-    setPreference();
-  });
+  /* Set data-theme based on saved theme */
+  if (currentTheme == "dracula") {
+    rootElement.setAttribute('data-theme', 'dracula');
+  } else if (currentTheme == "corporate") {
+    rootElement.setAttribute('data-theme', 'corporate');
+  }
+}

@@ -8,7 +8,10 @@ import tailwind from "@astrojs/tailwind";
 export default defineConfig({
   site: 'https://kylejamesross.com',
   integrations: [
-    mdx(),
+    mdx({
+      syntaxHighlight: 'shiki',
+      shikiConfig: { theme: 'dracula' },
+    }),
     sitemap(),
     tailwind(),
     partytown({
