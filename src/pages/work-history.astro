@@ -1,15 +1,12 @@
 
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
 import Layout from '../layouts/Layout.astro'
 import Breadcrumbs from '../components/Breadcrumbs.astro'
 import H1 from '../components/H1.astro'
-import { SITE_TITLE, SITE_DESCRIPTION, portfolioJSON } from '../consts';
+import { portfolioJSON } from '../consts';
 const { work: workplaces } = portfolioJSON;
 
-function monthNumberToAbbreviation(monthNumber) {
+function monthNumberToAbbreviation(monthNumber: number) {
   const months = [
     'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
     'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
@@ -28,7 +25,7 @@ function monthNumberToAbbreviation(monthNumber) {
 	<H1>Work History</H1>
 	<p class="italic mt-2 mb-4">Here is my current work history.</p>
 	<ul class="mt-5">
-		{workplaces.map((workplace) => (
+		{workplaces?.map((workplace) => (
 			<li class="grid grid-cols-12">
 				<div class="col-span-11">
 					<div class="flex items-center justify-between flex-wrap">
@@ -37,7 +34,7 @@ function monthNumberToAbbreviation(monthNumber) {
 					</div>
 					<p class="font-medium text-secondary pb-4">{workplace.position}{' '}<span class="badge badge-outline badge-primary mt-4 sm:mt-0">{workplace.location}</span></p>
 					<ul class="grid grid-cols-1 list-disc list-inside pb-8">
-						{workplace.highlights.map((highlight) => (
+						{workplace.highlights?.map((highlight) => (
 							<li class="font-light mb-2">{highlight}</li>
 						))}
 					</ul>

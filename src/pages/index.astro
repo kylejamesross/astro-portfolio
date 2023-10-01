@@ -1,7 +1,4 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
 import H1 from '../components/H1.astro';
 import Layout from '../layouts/Layout.astro';
 import SocialIcons from '../components/SocialIcons.astro';
@@ -16,8 +13,8 @@ import PostgresSqlIcon from '../components/technologies/PostgresSqlIcon.astro';
 import LessIcon from '../components/technologies/LessIcon.astro';
 import FormattedDate from '../components/FormattedDate.astro';
 import { getCollection } from 'astro:content';
-import { SITE_TITLE, SITE_DESCRIPTION, portfolioJSON } from '../consts';
-const featuredProjects = portfolioJSON.projects.slice(0, 3);
+import { portfolioJSON } from '../consts';
+const featuredProjects = portfolioJSON?.projects?.slice(0, 3);
 const recentPosts = (await getCollection('posts')).sort(
 	(a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
 ).slice(0, 3);
@@ -48,7 +45,7 @@ const recentPosts = (await getCollection('posts')).sort(
 	<section class="border-2 border-b-neutral-content border-t-transparent border-x-transparent py-4 border-solid">
 		<h2 class="text-2xl leading-normal">Featured Projects</h2>
 		<ul>
-			{featuredProjects.map((project) => (
+			{featuredProjects?.map((project) => (
 				<li class="card w-90 bg-base-200 p-0 shadow-xl my-4">
 					<a href={project.url} class="card-body p-4">
 						<h2 class="card-title font-medium text-accent decoration-dashed hover:underline">{project.displayName}</h2>
