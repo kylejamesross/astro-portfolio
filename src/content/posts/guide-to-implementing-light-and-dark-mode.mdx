@@ -19,125 +19,49 @@ Here is the current browser support for `prefers-color-scheme`:
 
 Here is an example of `prefers-color-scheme` :
 
-##### CSS:
-```css 
-/* Default styles for light mode */
-body {
-  background-color: #fff; /* White background */
-  color: #000; /* Black text */
-}
+<p class="codepen" data-height="400" data-theme-id="dark" data-default-tab="css,result" data-slug-hash="WNLWWMw" data-user="kylejamesross" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+  <span>See the Pen <a href="https://codepen.io/kylejamesross/pen/WNLWWMw">
+  Guide to Implementing Light and Dark Modes for Websites: Snippet 1</a> by Kyle Ross (<a href="https://codepen.io/kylejamesross">@kylejamesross</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
 
-/* Styles for dark mode */
-@media (prefers-color-scheme: dark) {
-  body {
-    background-color: #000; /* Black background */
-    color: #fff; /* White text */
-  }
-}
-```
 ## CSS Variables for light and dark themes
 
 While working on the visual style differences between your light and dark themes, it can be beneficial to define these differences using CSS variables. We then place these variables in the `:root` CSS pseudo-class.
 
-##### CSS:
-```css 
-/* Sets default light mode variables */
-:root {
-  --background-color: #fff; /* White background */
-  --text-color: #000; /* Black text */
-}
+<p class="codepen" data-height="600" data-theme-id="dark" data-default-tab="css,result" data-slug-hash="VwqNNXg" data-user="kylejamesross" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+  <span>See the Pen <a href="https://codepen.io/kylejamesross/pen/VwqNNXg">
+  Guide to Implementing Light and Dark Modes for Websites: Snippet 2</a> by Kyle Ross (<a href="https://codepen.io/kylejamesross">@kylejamesross</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
 
-/* Set dark mode variables from browser settings */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background-color: #000; /* Black background */
-	--text-color: #fff; /* White text */
-  }
-}
-
-/* Style using CSS variables */
-body {
-  background-color: var(--background-color);
-  color: var(--text-color);
-}
-```
 ## Toggling between Light and Dark Modes
 
 In order to implement the dark and light themes on our website, we will utilize CSS to distinguish between the two modes. To achieve this, we can utilize the `data-theme` attribute on the root HTML element.
 
-##### CSS:
-```css
-/* Sets default light mode variables */
-:root {
-  --background-color: #fff;
-  --text-color: #000;
-}
+<p class="codepen" data-height="600" data-theme-id="dark" data-default-tab="css,result" data-slug-hash="dywLLew" data-user="kylejamesross" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+  <span>See the Pen <a href="https://codepen.io/kylejamesross/pen/dywLLew">
+  Guide to Implementing Light and Dark Modes for Websites: Snippet 3</a> by Kyle Ross (<a href="https://codepen.io/kylejamesross">@kylejamesross</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
 
-/* Set dark mode variables from browser settings */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background-color: #000;
-	--text-color: #fff;
-  }
-}
-
-/* Sets the toggled light mode variables */
-:root[data-theme="light"] {
-  --background-color: #fff;
-  --text-color: #000;
-}
-
-/* Sets the toggled dark mode variables */
-:root[data-theme="dark"] {
-   --background-color: #000;
-   --text-color: #fff;
-}
-
-/* Styles using CSS variables */
-body {
-  background-color: var(--background-color);
-  color: var(--text-color);
-}
-```
 Next, we will incorporate JavaScript to handle toggling the `data-theme` attribute on the root element:
-##### JS:
-```javascript
-const rootElement = document.documentElement; // html element
-function toggleTheme() {
-  const currentTheme = rootElement.getAttribute('data-theme');
-  const newTheme = currentTheme === "dark" ? "light" : "dark";
-  rootElement.setAttribute('data-theme', newTheme);
-}
 
-const toggleThemeButton = document.getElementById('theme-toggle-btn');
-toggleThemeButton.addEventListener('click', toggleTheme);
-```
+<p class="codepen" data-height="350" data-theme-id="dark" data-default-tab="js,result" data-slug-hash="dywLLew" data-user="kylejamesross" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+  <span>See the Pen <a href="https://codepen.io/kylejamesross/pen/dywLLew">
+  Guide to Implementing Light and Dark Modes for Websites: Snippet 3</a> by Kyle Ross (<a href="https://codepen.io/kylejamesross">@kylejamesross</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+
 ## Persisting the User's Selected Theme
 To ensure that the user's selected theme persists across pages and visits, we need to store the theme in the browser's `localStorage` when it is toggled. Here is the updated code:
 
-##### JS:
-```javascript
-const rootElement = document.documentElement; // html element
+<p class="codepen" data-height="600" data-theme-id="dark" data-default-tab="js,result" data-slug-hash="bGOJJxp" data-user="kylejamesross" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+  <span>See the Pen <a href="https://codepen.io/kylejamesross/pen/bGOJJxp">
+  Guide to Implementing Light and Dark Modes for Websites: Snippet 4</a> by Kyle Ross (<a href="https://codepen.io/kylejamesross">@kylejamesross</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
 
-function toggleTheme() {
-  const currentTheme = rootElement.getAttribute('data-theme');
-  const newTheme = currentTheme === "dark" ? "light" : "dark";
-  rootElement.setAttribute('data-theme', newTheme);
-  localStorage.setItem("theme", newTheme);
-}
-
-const toggleButton = document.getElementById('theme-toggle-btn');
-toggleButton.addEventListener('click', toggleTheme);
-
-const currentTheme = localStorage.getItem("theme");
-
-/* Set data-theme based on saved theme */
-if (currentTheme == "dark") {
-  rootElement.setAttribute('data-theme', 'dark');
-} else if (currentTheme == "light") {
-  rootElement.setAttribute('data-theme', 'light');
-}
-```
 With this updated code, the user's selected theme will be stored in `localStorage` when the theme is toggled. When the user visits another page or reloads the page, the selected theme will be applied.
 
 ## Informing the Browser about System Color Scheme Changes
@@ -158,73 +82,9 @@ By providing this information to the browser, it can consider the color scheme w
 ## Conclusion
 In conclusion, we have implemented a light and dark mode feature. This allows users to toggle between light and dark modes, enhancing their overall browsing experience. Additionally, we have allowed the adaption of the theme based on the user's browser settings.  Below is the final result:
 
-##### CSS:
-```css
-/* Sets default light mode variables */
-:root {
-	--background-color: #fff;
-	--text-color: #000;
-}
+<p class="codepen" data-height="700" data-theme-id="dark" data-default-tab="css,result" data-slug-hash="bGOJJxp" data-user="kylejamesross" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+  <span>See the Pen <a href="https://codepen.io/kylejamesross/pen/bGOJJxp">
+  Guide to Implementing Light and Dark Modes for Websites: Snippet 4</a> by Kyle Ross (<a href="https://codepen.io/kylejamesross">@kylejamesross</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
 
-/* Set dark mode variables from browser settings */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background-color: #000;
-	--text-color: #fff;
-  }
-}
-
-/* Sets the toggled light mode variables */
-:root[data-theme="light"] {
-	--background-color: #fff;
-	--text-color: #000;
-}
-
-/* Sets the toggled dark mode variables */
-:root[data-theme="dark"] {
-    --background-color: #000;
-	--text-color: #fff;
-}
-
-/* Styles using CSS variables */
-body {
-  background-color: var(--background-color);
-  color: var(--text-color);
-}
-```
-##### JS:
-```javascript
-const rootElement = document.documentElement; // html element
-
-function toggleTheme() {
-  const currentTheme = rootElement.getAttribute('data-theme');
-  const newTheme = currentTheme === "dark" ? "light" : "dark";
-  rootElement.setAttribute('data-theme', newTheme);
-  localStorage.setItem("theme", newTheme);
-}
-
-const toggleButton = document.getElementById('theme-toggle-btn');
-toggleButton.addEventListener('click', toggleTheme);
-
-const currentTheme = localStorage.getItem("theme");
-
-/* Set data-theme based on saved theme */
-if (currentTheme == "dark") {
-  rootElement.setAttribute('data-theme', 'dark');
-} else if (currentTheme == "light") {
-  rootElement.setAttribute('data-theme', 'light');
-}
-```
-##### HTML:
-```html
-<html>
-  <head>
-     <meta name="color-scheme"  content="dark light">
-  </head>
- <body>
-  Sample Text
-   <button id="theme-toggle-btn">Toggle Theme</button>
-</body>
-</html>
-```
-<br/>

@@ -10,7 +10,7 @@ const { pubDate, updatedDate } = Astro.props;
 
 <Layout>
 	<article class="w-full">
-		<div class="prose w-full">
+		<div class="prose w-full max-w-full">
 			<div class="title">
 				<div class="date">
 					<FormattedDate date={pubDate} />
@@ -27,3 +27,4 @@ const { pubDate, updatedDate } = Astro.props;
 		</div>
 	</article>
 </Layout>
+<script is:inline src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
