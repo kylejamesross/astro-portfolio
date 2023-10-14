@@ -1,0 +1,71 @@
+---
+title: 'Aspect Ratio in CSS'
+description: 'Learn about the details using aspect-ratio in css.'
+summary: 'Learn about the details using aspect-ratio in css.'
+pubDate: 'Oct 13 2023'
+---
+
+# Aspect Ratio in CSS
+
+The `aspect-ratio` CSS property enables you to specify the preferred width-to-height ratio for an element's box. When you resize the element, the browser will automatically adjust the element to maintain the specified aspect ratio.
+
+Here is `aspect-ratio` in action:
+
+<p class="codepen" data-height="500" data-theme-id="dark" data-default-tab="css,result" data-slug-hash="dywLLEE" data-user="kylejamesross" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+  <span>See the Pen <a href="https://codepen.io/kylejamesross/pen/dywLLEE">
+  Aspect Ratio in CSS: Snippet 1</a> by Kyle Ross (<a href="https://codepen.io/kylejamesross">@kylejamesross</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+
+Equivalent CSS:
+```css
+img {
+    width: 100px;
+    height: 400px;
+}
+```
+
+
+## Syntax
+
+``` aspect-ratio: auto || <ratio>```
+
+| Property          | Value                                      |
+| ----------------- | ------------------------------------------ |
+| Initial value     | auto                                       |
+| Applies to        | all elements except inline boxes and internal ruby or table boxes |
+| Inherited         | no                                         |
+| Percentages       | n/a                                        |
+| Computed value    | specified keyword or a pair of numbers     |
+| Animation type    | discrete                                   |
+
+## Examples
+
+```css
+aspect-ratio: auto; /* default - no aspect ratio sizes normally */
+aspect-ratio: 1 / 1; /* width / height */
+aspect-ratio: 1 / 3; /* width / height */
+aspect-ratio: auto 1 / 3; /* Use instrinsic ratio otherwise 1 / 3 */
+```
+
+## Fallback to natural aspect ratio
+When using both `auto` and `<ratio>`, the element's intrinsic aspect ratio takes precedence. See it in action:
+
+<p class="codepen" data-height="300" data-theme-id="dark" data-default-tab="css,result" data-slug-hash="YzdMbry" data-user="kylejamesross" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+  <span>See the Pen <a href="https://codepen.io/kylejamesross/pen/YzdMbry">
+  Aspect Ratio in CSS: Snippet 2</a> by Kyle Ross (<a href="https://codepen.io/kylejamesross">@kylejamesross</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+
+## No width or height is defined
+If neither width nor height is specified, it defaults to using `auto` for the width:
+
+<p class="codepen" data-height="300" data-theme-id="dark" data-default-tab="css,result" data-slug-hash="yLGrWvq" data-user="kylejamesross" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+  <span>See the Pen <a href="https://codepen.io/kylejamesross/pen/yLGrWvq">
+  Aspect Ratio in CSS: Snippet 3</a> by Kyle Ross (<a href="https://codepen.io/kylejamesross">@kylejamesross</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+
+<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+<script is:inline src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>

@@ -6,7 +6,7 @@ import H1 from '../../components/H1.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 
 const posts = (await getCollection('posts')).sort(
-	(a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
+	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 );
 ---
 
