@@ -1,0 +1,87 @@
+---
+title: 'How to use Variable Fonts in CSS'
+description: 'A brief overview of how to use variable fonts in CSS.'
+summary: 'A brief overview of how to use variable fonts in CSS.'
+pubDate: 'Dec 10 2023'
+---
+
+# How to use Variable Fonts in CSS
+
+## What are variable fonts?
+A variable font is a single font file that represents multiple variations of a typeface. In contrast to the traditional approach, where a typeface was represented by multiple font files. Variable fonts give you more typographical control, enabling you to change properties like font weight and width.
+
+---
+
+## Benefits of Variable Fonts
+- Reduced number of loaded font files
+- Enhanced flexibility in font design
+- Efficiency and compression through the loading of a single font file
+
+---
+
+## Defining a Variable Font
+
+You can load a variable font through the same `@font-face` CSS-at-rule used for traditional fonts. In the `src` property use the `format('woff2-variations')` syntax. Additionally for the `font-weight` and `font-stretch` properties we provide the range of our weight and width.
+
+For our example, we will use the popular variable font [Roboto Flex](https://fonts.google.com/specimen/Roboto+Flex). Now let's define our `@font-face`:
+<p class="codepen" data-height="350" data-default-tab="css,result" data-slug-hash="wvNZBPy" data-user="kylejamesross" style="height: 350px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+  <span>See the Pen <a href="https://codepen.io/kylejamesross/pen/wvNZBPy">
+  Benefits of Variable Fonts (Example 1)</a> by Kyle Ross (<a href="https://codepen.io/kylejamesross">@kylejamesross</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+*Note if you are using the Google Fonts API the @font-face will already be defined.*
+
+---
+
+## Variation axes
+We customize variable fonts by adjusting variation axes. There are registered and custom variation axes. Be sure to check the documentation of your font to determine which variation axes you can modify.
+
+### Registered Variation Axes
+There are five registered axes:
+
+| Axis Name      | Tag       | Description                   |
+| -------------- | --------- | ----------------------------- |
+| Weight         | wght      | Controls the font weight      |
+| Width          | wdth      | Adjusts the font width        |
+| Slant          | slnt      | Modifies the font slant       |
+| Optical Size   | opsz      | Manages the font optical size |
+| Italics        | ital      | Applies italic style          |
+
+*All registered axes have 4-character lowercase tags.*
+
+Font weight and width are mapped to the CSS `font-weight` and `font-stretch` properties, respectively. For the other properties you will need to set them with `font-variation-settings`.
+
+<p class="codepen" data-height="650" data-default-tab="css,result" data-slug-hash="oNmOgVB" data-user="kylejamesross" style="height: 650px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+  <span>See the Pen <a href="https://codepen.io/kylejamesross/pen/oNmOgVB">
+  Benefits of Variable Fonts (Example 2)</a> by Kyle Ross (<a href="https://codepen.io/kylejamesross">@kylejamesross</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+
+
+### Custom Variation Axes
+
+Additionally font developers can define custom variation axes for variable fonts. Check your fonts documentation to determine the axes you are able to use.
+
+*All custom variation axes have 4-character uppercase tags.*
+
+#### Grade
+Grade is used to adjust the typeface density or relative weight without increasing the physical size of the font. It is a common custom variation axis. Font grade has the CSS tag `GRAD`.
+
+Example:
+
+```css
+.grade-heavy {
+    font-variation-settings: 'GRAD' 150;
+}
+```
+
+---
+
+## Browser Support
+
+All modern internet browsers should support variable fonts. For older browsers, you can add compatibility by using static fonts and adding variable fonts as an enhancement.
+
+![Can I use variable-fonts](https://caniuse.bitsofco.de/image/variable-fonts.png)
+
+<script src="https://cdn.jsdelivr.net/gh/ireade/caniuse-embed/public/caniuse-embed.min.js"></script>
+<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
