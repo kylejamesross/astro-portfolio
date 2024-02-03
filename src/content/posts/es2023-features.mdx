@@ -1,0 +1,57 @@
+---
+title: 'ES2023 Features'
+description: 'A look at all the new features in ES2023.'
+summary: 'A look at all the new features in ES2023.'
+pubDate: 'Feb 2 2024'
+---
+
+# ES2023 Features
+
+With 2023 finally behind us, we can take a look at all of the new features added to JavaScript. ES2023 adds many useful array methods, and other helpful features.
+
+## Array Methods
+
+### `Array.findLast` and `Array.findLastIndex`
+
+To start off we have the two array method `findLast` and `findLastIndex`. They are similar to their `find` and `findIndex` counterparts. 
+`findLast` simply iterates over a array from right to left and returns the first element that satisfies callback. `findLastIndex` is similar but simply returns the first index instead of the first element.
+
+<p class="codepen" data-height="400" data-default-tab="js" data-slug-hash="WNmJpKN" data-user="kylejamesross" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+  <span>See the Pen <a href="https://codepen.io/kylejamesross/pen/WNmJpKN">
+  ES2023 Features (Example 1)</a> by Kyle Ross (<a href="https://codepen.io/kylejamesross">@kylejamesross</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+
+## Non-mutating Array Methods
+
+ES2023 adds several non-mutating array methods to JavaScript. These methods will return a new copy of an array without mutating the original array.
+
+### `Array.toReversed`
+Returns a reversed copy of the array.
+
+### `Array.toSorted`
+Returns a sorted copy of the array.
+
+### `Array.toSpliced(start, deleteCount, ...itemsToAdd)`
+Returns a spliced copy of the array.
+
+### `Array.with(index, itemToReplace)`
+Returns a copy of the array with the item at the `index` replaced.
+
+<p class="codepen" data-height="400" data-default-tab="js" data-slug-hash="vYPjxvV" data-user="kylejamesross" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+  <span>See the Pen <a href="https://codepen.io/kylejamesross/pen/vYPjxvV">
+  CodePen Home ES2023 Features (Example 1)</a> by Kyle Ross (<a href="https://codepen.io/kylejamesross">@kylejamesross</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+
+## Shebang Grammar
+The Shebang is the combination of the # (pound key) and ! (exclamation mark). It is included in the first line of a script. It is used by the interpreter to determine what will run the given script. This support has now been officially added to JavaScript. This now makes it easier to evaluate JavaScript from scripts. The following is an example of how to run a script in NodeJS.
+
+<p class="codepen" data-height="200" data-default-tab="js" data-slug-hash="yLwjMra" data-user="kylejamesross" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+  <span>See the Pen <a href="https://codepen.io/kylejamesross/pen/yLwjMra">
+  ES2023 Features (Example 3)</a> by Kyle Ross (<a href="https://codepen.io/kylejamesross">@kylejamesross</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+
+<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+<script is:inline src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
