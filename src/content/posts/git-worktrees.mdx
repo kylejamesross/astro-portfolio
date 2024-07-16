@@ -1,0 +1,22 @@
+---
+title: 'Supercharge your workflow with Git Worktrees'
+description: 'A brief overview of Git Worktrees and their uses'
+summary: 'A brief overview of Git Worktrees and their uses'
+pubDate: 'June 2 2024'
+---
+
+# Supercharge your workflow with Git Worktrees
+
+Git Worktrees allow you to have multiple working directories for a single repository. This feature enables you to work on different branches simultaneously. It is particularly useful for managing context switching in Git. For instance, you can be developing a feature and then quickly switch to fixing a production bug by creating a new worktree for the bug fix branch.
+
+## Listing your Worktrees
+
+You can list your worktrees and their details by running the follow command in a git repository: 
+
+`git worktree list`
+
+The main worktree is always listed first, followed by each linked worktrees.
+
+## Types of Worktrees
+- Main
+- Linked
