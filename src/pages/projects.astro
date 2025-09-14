@@ -6,7 +6,10 @@ import Layout from '../layouts/Layout.astro'
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import H1 from '../components/H1.astro';
 import { portfolioJSON } from '../consts';
-const projects = portfolioJSON.projects
+const projects = portfolioJSON.projects;
+console.log(projects);
+
+console.log(JSON.stringify(projects, null, 4));
 ---
 
 <Layout>
@@ -14,28 +17,30 @@ const projects = portfolioJSON.projects
 	<H1>Projects</H1>
 	<p class="italic mt-2 mb-4">Here are all my projects.</p>
 	<ul class="grid grid-cols-1 md:grid-cols-2 gap-5 mt-5">
-		{
-		projects?.map((project) => (
-			<li>
-				<a href={project.url} class="card card-compact w-90 bg-base-200 shadow-xl">
-					<figure>
-						<img width="100%" src={project.images.at(0).resolutions.mobile.url || ''} alt={project.displayName} />
-					</figure>
-					<div class="card-body">
-						<h2 class="card-title">{project.displayName}</h2>
-						<p>{project.summary}</p>
-						<div class="card-actions justify-end">
-							{project.languages?.map((language) => (
-								<div class="badge badge-primary badge-outline">{language}</div> 
-							))}
-							{project.libraries?.map((library) => (
-								<div class="badge badge-secondary badge-outline">{library}</div> 
-							))}
+		{projects?.map((project) => {
+			const firstImageKey = Object.keys(project.images)[0];
+			const firstImage = project.images[firstImageKey];
+			return (
+				<li>
+					<a href={project.url} class="card card-compact w-90 bg-base-200 shadow-xl">
+						<figure>
+							<img width="100%" src={firstImage.resolutions.mobile.url || ''} alt={project.displayName} />
+						</figure>
+						<div class="card-body">
+							<h2 class="card-title">{project.displayName}</h2>
+							<p>{project.summary}</p>
+							<div class="card-actions justify-end">
+								{project.languages?.map((language) => (
+									<div class="badge badge-primary badge-outline">{language}</div> 
+								))}
+								{project.libraries?.map((library) => (
+									<div class="badge badge-secondary badge-outline">{library}</div> 
+								))}
+							</div>
 						</div>
-					</div>
-				</a>
-			</li>
-		))
-		}
+					</a>
+				</li>
+			)
+		})}
 	</ul>
 </Layout>
